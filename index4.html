@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background: linear-gradient(rgb(252, 149, 115),rgb(145,75,87));
+            height: 100vh;
+        }
+        .main{
+            border: 1px solid white;
+            box-shadow: 2px 1px rgb(14, 12, 12);
+            border-radius: 15px;
+             padding: 25px 85px;
+            background-color: rgb(18, 16, 16);
+        }
+        .first{
+            margin: 15px;
+            padding: 5px 20px;
+        }
+        .first button{
+            border: 1px solid white;
+            text-align: center;
+            background-color: rgb(85, 90, 94);
+            color: #000;
+            margin: 5px;
+            margin-top: 5px;
+            padding: 4px 6px;
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.6s ease-in-out;
+          
+        }
+        #first button:nth-child(1){
+            background-color: rgb(185, 49, 49);
+        }
+        #first button:nth-child(2){
+            background-color: rgb(224, 13, 13);
+        }
+        .first button:hover{
+            background-color: black;
+            color: white;
+            border: none;
+        }
+        .Input{
+          
+            margin-left: 30px;
+            padding: 15px 25px;
+        }
+        #Input1{
+            background-color: transparent;
+            outline: none;
+      border-top: none;
+    
+      border-right: none;
+      border-bottom: 2px solid white;
+            padding: 15px 25px;
+            color: white;
+            font-size: 15px;
+            padding-left: none;
+        }
+    ::placeholder{
+        text-align: right;
+        font-size: 15px;
+        color:white;
+        margin-left: -2px;
+        font-family: sans-serif;
+    }
+    #Input1[type="text"]{
+        text-align: right;
+        position: relative;
+    }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="Input">
+            <input id="Input1" type="text" value=" " placeholder="000 ">
+        </div>
+        <div class="first" id="first">
+            <button >C</button>
+            <button>AC</button>
+            <button>%</button>
+            <button>/</button>
+        </div>
+        <div class="first" id="first1">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>+</button>
+        </div>
+        <div class="first" id="first2 ">
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>-</button>
+        </div>
+        <div class="first" id="first3">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>*</button>
+        </div>
+        <div class="first" id="first4">
+            <button>sqr</button>
+            <button>0</button>
+            <button>.</button>
+            <button>=</button>
+        </div>
+    </div>
+    <script>
+        let btn1=document.querySelectorAll("button");
+        let diplay=document.querySelector("#Input1")
+        let string="";
+        let arr=Array.from(btn1);
+         arr.forEach((ArrEle)=>{
+          ArrEle.addEventListener("click" , (e)=>{
+            if(e.target.innerHTML==="AC"){
+                string="";
+                diplay.value=string;
+            }
+            else if(e.target.innerHTML==="C"){
+                string=string.substring(0,string.length-1);
+                diplay.value=string;
+       
+            }
+            else if(e.target.innerHTML==="sqr"){
+                string= Math.pow(string,2);
+                diplay.value=string;
+            }
+            else if(e.target.innerHTML=="="){
+                string=eval(string);
+                diplay.value=string;
+                console.log(string)
+              
+            }
+            else if(e.target.innerHTML){
+                string+=e.target.innerHTML;
+                diplay.value=string;
+                console.log(string);
+            }
+        
+        
+          })
+
+         })
+    </script>
+    <!-- <script src="index4.js"></script> -->
+</body>
+</html>
