@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 35px;
+            padding: 25px 85px;
+            background-color: rgb(71, 65, 65);
+            color: white;
+        }
+        h1{
+            text-align: center;
+            font-size: 25px;
+            position: relative;
+            left: -100px;
+            margin: 12px -15px;
+            padding: 6px 15px;
+        }
+        .menu-list input{
+            background: transparent;
+            color :white;
+            font-size: 20px;
+            padding: 12px 25px;
+            margin: 5px 50px;
+        border: 1px solid white;
+        outline: none;
+        }
+        .btn{
+            font-size: 20px;
+            padding: 12px 25px;
+            background: rgb(195, 195, 22);
+            border-radius: 25px;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+            transition: all 0.5s ease;
+            border: 1px solid white;
+        }
+        .btn:hover{
+            border: 1px solid yellow;
+            background-color: black;
+            color: yellow;
+        }
+        .menu-list1{
+
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+             flex-direction: row;
+            margin: 20px 50px;
+
+        }
+      .menu-list1 button{
+        font-size: 20px;
+        padding: 12px 25px;
+        background: rgb(195, 195, 22);
+        border-radius: 25px;
+        outline: none;
+        border: none;
+        position: relative;
+        left: -100px;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        border: 1px solid white;
+        color:white
+    }
+    .menu-list1 li{
+        font-size: 25px;
+        list-style-type:square;
+    }
+      
+      .menu-list1 button:hover{
+        border: 1px solid yellow;
+        background-color: black;
+        color: yellow;
+      }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Todo List App</h1>
+        <form action="">
+        <div class="main">
+            <div class="menu-list">
+                <input id="Input" type="text" placeholder="Enter something:">
+                <button class="btn">Add - list</button>
+            </div>
+            <section id="Section">
+
+        </section>
+        </div>
+    </form>
+    </section>
+    <script>
+        let getInput=document.querySelector("#Input");
+        let Section1=document.querySelector("#Section")
+        let btn=document.querySelector(".btn");
+        //add the data from the user :
+        const handle=(e)=>{
+         e.preventDefault();
+         const getValue=getInput.value.trim();
+         getInput.value="";
+         if(getValue!==""){
+         let divEle=document.createElement("div");
+         divEle.classList.add("menu-list1");
+         divEle.innerHTML=`<li>${getValue }</li> <button>Delete</button>`;
+          Section1.append(divEle);
+         }
+
+        }
+        //remove the data from the website
+        const removeList=(e)=>{
+            const todoRemove=e.target;
+console.log(todoRemove);
+            let parent=todoRemove.parentElement;
+        
+            parent.remove();
+        }
+        //button for adding list
+        btn.addEventListener("click",(e)=>{
+            handle(e);
+         } );
+         // button for deleting list from app:
+         Section1.addEventListener("click",(e)=>{
+            e.preventDefault();
+           removeList(e);
+         })
+        
+    </script>
+</body>
+</html>
